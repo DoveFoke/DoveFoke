@@ -14,7 +14,7 @@ public class Main {
         int m;
         int numerator;
         double denominator;
-        byte a, b;
+        byte a, b, i, j;
         double constanta = 1428 % 3, res = 0;
         try {
             System.out.print("Введите значение n: ");
@@ -33,12 +33,12 @@ public class Main {
             System.out.println("Вводимые данные a и b не могут быть больше n и m соответственно.");
             return;
         }
-        if (a <= 0 || b <= 0) {
+        else if (a < 1 || b < 1) {
             System.out.println("Порядковый номер суммы ряда(a и b) не может быть меньше или равным 0!");
             return;
         }
-        for (byte i = a;i<=n;i++) {
-            for (byte j = b; j <= m; j++) {
+        for (i = a; i<=n; i++) {
+            for (j = b; j <= m; j++) {
                 denominator = i + constanta;
                 if (denominator == 0){
                     System.out.println("Знаменатель не может быть равен 0, так как на 0 делить нельзя.");
