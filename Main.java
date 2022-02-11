@@ -4,18 +4,20 @@
 //  С5 = 3, операция О2 - "+"
 //  С7 = 0, тип индексов i и j - byte
 package com.kpi;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        int n;
-        int m;
+        final int n;
+        final int m;
         int numerator;
         double denominator;
         byte a, b, i, j;
-        double constanta = 1428 % 3, res = 0;
+        final double constanta = 1428 % 3;
+        double res = 0;
         try {
             System.out.print("Введите значение n: ");
             n = scan.nextInt();
@@ -25,7 +27,7 @@ public class Main {
             a = scan.nextByte();
             System.out.print("Введите значение b: ");
             b = scan.nextByte();
-        } catch (InputMismatchException exc){
+        } catch (InputMismatchException exc) {
             System.out.println("Введённые данные должны соответствовать типу, обозначенному в задании!");
             return;
         }
@@ -33,22 +35,17 @@ public class Main {
             System.out.println("Вводимые данные a и b не могут быть больше n и m соответственно.");
             return;
         }
-        else if (a < 1 || b < 1) {
-            System.out.println("Порядковый номер суммы ряда(a и b) не может быть меньше или равным 0!");
+        if (a <= -constanta && -constanta <= n) {
+            System.out.println("На 0 делить нельзя!");
             return;
         }
-        for (i = a; i<=n; i++) {
+        for (i = a; i <= n; i++) {
             for (j = b; j <= m; j++) {
                 denominator = i + constanta;
-                if (denominator == 0){
-                    System.out.println("Знаменатель не может быть равен 0, так как на 0 делить нельзя.");
-                    break;
-                } else {
-                    numerator = i + j;
-                    res += numerator / denominator;
-                }
+                numerator = i + j;
+                res += numerator / denominator;
             }
         }
-        System.out.println("Результат вычислений: S = "+res);
+        System.out.println("Результат: S = " + res);
     }
 }
